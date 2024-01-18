@@ -32,7 +32,7 @@ class TestInputOutput(unittest.TestCase):
     def check_result(self, result: str, answer: str):
         """Test the user's answer against the expected answer."""
         if answer != "":
-            self.assertNotEqual(result.strip(), "", msg=f"No output from program.")
+            self.assertNotEqual(result.strip(), "", msg="No output from program.")
         self.assertIn(result,
           answer,
           msg=f"User output {result!r} != expected output {answer!r}")
@@ -41,31 +41,31 @@ class TestInputOutput(unittest.TestCase):
         testcase = "T0102051F\n"
         testans = "NRIC is valid.\n"
         userans = invoke_main(testcase)
-        self.test_result(userans, testans)        
+        self.check_result(userans, testans)        
 
     def test_valid_s(self):
         testcase = "S8521097A\n"
         testans = "NRIC is valid.\n"
         userans = invoke_main(testcase)
-        self.test_result(userans, testans)        
+        self.check_result(userans, testans)        
 
     def test_range_check(self):
         testcase = "C1234567C\n"
         testans = "NRIC is invalid.\n"
         userans = invoke_main(testcase)
-        self.test_result(userans, testans)        
+        self.check_result(userans, testans)        
 
     def test_length_check(self):
         testcase = "S123456B\n"
         testans = "NRIC is invalid.\n"
         userans = invoke_main(testcase)
-        self.test_result(userans, testans)        
+        self.check_result(userans, testans)        
 
     def test_checksum(self):
         testcase = "S1234567A\n"
         testans = "NRIC is invalid.\n"
         userans = invoke_main(testcase)
-        self.test_result(userans, testans)        
+        self.check_result(userans, testans)        
 
 
 if __name__ == '__main__':
